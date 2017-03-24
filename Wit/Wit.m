@@ -184,12 +184,11 @@
         [self error:err customData:customData];
         return;
     }
-    if([type isEqual:@"message"]){
-        [self processMessage:resp customData:customData];
 
-
-    } else if([type isEqual: @"converse"]){
+    if([type isEqual: @"converse"]){
         [self processConverse:resp customData:customData];
+    } else {
+        [self processMessage:resp customData:customData];
     }
     
 }
