@@ -16,6 +16,7 @@
 
 @interface Wit () <WITRecordingSessionDelegate>
 @property (nonatomic, strong) WITState *state;
+@property bool useSFSpeechRecognition;
 @end
 
 @implementation Wit {
@@ -41,7 +42,7 @@
 
 
 - (void)start: (id)customData {
-    if ([SFSpeechRecognizer class]) {
+    if ([SFSpeechRecognizer class] && self.useSFSpeechRecognition) {
         self.recordingSession = [[WITSFSpeechRecordingSession alloc] initWithWitContext:self.state.context
                                                                      vadEnabled:[Wit sharedInstance].detectSpeechStop withWitToken:[WITState sharedInstance].accessToken
                                                                    withDelegate:self];
@@ -273,6 +274,7 @@
 #pragma mark - Lifecycle
 - (void)initialize {
     self.state = [WITState sharedInstance];
+    self.useSFSpeechRecognition = true;
     self.detectSpeechStop = WITVadConfigDetectSpeechStop;
     self.vadTimeout = 7000;
     self.vadSensitivity = 0;
