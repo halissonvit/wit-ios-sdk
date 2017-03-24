@@ -16,7 +16,6 @@
 
 @interface Wit () <WITRecordingSessionDelegate>
 @property (nonatomic, strong) WITState *state;
-@property bool useSFSpeechRecognition;
 @end
 
 @implementation Wit {

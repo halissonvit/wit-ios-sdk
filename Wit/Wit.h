@@ -56,6 +56,13 @@
 @property (nonatomic, assign) NSInteger vadSensitivity;
 
 /**
+ * Define if SFSpeechRecognition (built-in ios speech recognition) should be used when available:
+ * - Defaults to true
+ */
+@property bool useSFSpeechRecognition;
+
+
+/**
  Singleton instance accessor.
  */
 + (Wit *)sharedInstance;
